@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Caprasimo&family=Inter:wght@400;500&family=Merriweather&family=Poppins&family=Roboto&family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+
+    <title>Spices.</title>
+    <script src="https://kit.fontawesome.com/956d0879c6.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <section class="main-section bg-light overflow-hidden">
+     <div class="select mt-5 mb-5">
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col col-xl-4">
+            <div class="container mt-5">
+              <div class="row-1">
+                <label for="">Product Name :<span style="color: red;">*</span></label>
+                <input type="text" id="name" placeholder="Product Name">
+                <span style="display: none;" id="productere">Enter product name</span>
+              </div>
+              <div class="form-group row-1">
+                <label for="exampleFormControlTextarea1" >Description textarea :<span style="color: red;">*</span></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <span style="display: none;" id="textere">Enter Description</span>
+              </div>
+              <div class="row-1">
+                <label for="">Choose Image :<span style="color: red;">*</span></label>
+                <input type="file" id="imgvalue" onchange="imagevalue(event)" onchange="readURL(this);">
+                <span style="display: none;" id="Imageere">Enter value image</span>
+                <span style="display: none;" id="Imageeres">Enter  image</span>
+              </div>
+              <div class="row-1">
+                <input type="button" value="Submit" onclick="udaya()" class="btn btn-primary my-3 button" >
+              </div>
+            </div>
+          </div> -->
+          <div class="col-xl-4 mx-auto reed">
+            <div class="card">
+              <label class="mul-value text-center btn btn-primary">Rs:<span id="mult">100</span></label>
+              <div class="card-img mx-auto mb-2">
+                <img  id="my-image">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center" id="card-title">Mutton Curry Masala</h5>
+                <p class="card-text" id="card-text">Mutton Curry Masala is a delicious and flavorful Indian dish made with tender and is often served with ...</p>
+                <div class="container mb-3">
+                  <div class="row mx-auto count text-center">
+                    <button class="col col-xl-3 " id="decr" onclick="clickeven(-1)"><i class="fa-solid fa-minus"></i></button>
+                    <div class="col col-xl-3" id="counter">0</div>
+                    <button class="col col-xl-3" id="incr"onclick="clickeven(1)"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                  <span  id="incr-er" style="display: none;">Max count only 5</span>
+                </div>
+                <a href="card.html" onclick="success()" class="btn btn-primary">Add to Card</a>
+                <label class="mul-value text-center btn btn-primary">Rs:<span id="multees">0</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+
+    </section>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+<script>
+
+  function clickeven(click){
+    let result = document.getElementById('counter');
+    let incr = document.getElementById('incr');
+    let decr = document.getElementById('decr');
+    let count =parseInt(result.innerText)+click;
+    result.innerText=count;
+
+    
+    if(count < 0){
+      result.innerText =0;
+    }
+    if(count >= 5){
+      result.innerText =5;
+      document.getElementById('incr-er').style="display: black;color:red;"
+    }else{
+      document.getElementById('incr-er').style="display: none;"
+    }
+    // let countree =count+-1;
+    
+    if (count <= 5 || count<=0){
+      let multee = document.getElementById('mult').innerText*count;
+      document.getElementById('multees').innerText=multee;
+    }
+    if (count<=0) {
+      multees.innerText=0;
+    }
+  }
+
+  function udaya(){
+    // let name = document.getElementById('name').value.trim();
+    // let description1 = document.getElementById('exampleFormControlTextarea1').value.trim();
+   
+
+    // product name
+    let card_spilt = protitle.split(' ');
+    let card_name = "";
+    for (let index = 0; index < card_spilt.length; index++) {
+      card_name = card_name + card_spilt[index].charAt(0).toUpperCase()+card_spilt[index].slice(1)+' ';
+    };
+    document.getElementById('card-title').innerHTML=card_name;
+
+    // textarea
+    let description1_spilt = protext.split(' ');
+    let description1_name = "";
+    for (let index = 0; index < description1_spilt.length; index++) {
+      description1_name = description1_name + description1_spilt[index].charAt(0).toUpperCase()+description1_spilt[index].slice(1)+' ';
+    }
+    let description1_filter = description1_name.substr(0,70)+'...';
+    document.getElementById('card-text').innerHTML=description1_filter;
+    
+
+    console.log('--22---',imgvalue.src);
+
+  }
+//   function readURL(input) 
+// {
+//     document.getElementById("bannerImg").style.display = "block";
+
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+
+//         reader.onload = function (e) {
+//             document.getElementById('bannerImg').src =  e.target.result;
+//         }
+
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
+
+
+
+  function success(){
+    // let sectitle =document.getElementById('card-title').innerText;
+    let seccount =document.getElementById('counter').innerText;
+    let secamount =document.getElementById('multees').value;
+    // let imagevaluesrc = document.getElementById('imgvalue');
+
+    // localStorage.setItem('product_title',sectitle);
+    localStorage.setItem('product_count',seccount);
+    localStorage.setItem('product_amount',multees.innerHTML);
+    // localStorage.setItem('product_image',imagevaluesrc);
+
+  }
+
+  function getLocalStorage(){
+    console.log('-------');
+
+    let protitle = localStorage.getItem('product_title');
+    let protext = localStorage.getItem('product_text');
+    let provalue = localStorage.getItem('product_value');
+    // let proamount = localStorage.getItem('product_amount');
+  
+
+
+    document.getElementById('card-title').innerHTML=protitle;
+    document.getElementById('card-text').innerHTML=protext;
+    document.getElementById('mult').innerHTML=provalue;
+    // document.getElementById('sesmultees').innerHTML=proamount;
+
+
+     const myImage = document.getElementById("my-image");
+    myImage.src = localStorage.getItem("my-image");
+  }
+
+  getLocalStorage()
+</script>
+
+
+ 
